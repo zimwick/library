@@ -11,19 +11,29 @@
     <header><h1>Libray App</h1></header>
     <main>
       <div class="add-book-container">
-        <button id="form-toggle" type="button">New Book</button>
-        <form class="hidden">
+        <button id="add-book-btn" type="button">New Book</button>
+        <form action="" class="hidden">
           <div class="form-book-title">
             <label for="title">Title: </label>
-            <input type="text" name="title" id="title" />
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="e.g. The Lord of the Rings"
+            />
           </div>
           <div class="form-book-author">
             <label for="author">Author: </label>
-            <input type="text" name="author" id="author" />
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="e.g. J.R.R. Tolkien"
+            />
           </div>
           <div class="form-book-pages">
             <label for="pages">Pages: </label>
-            <input type="number" name="pages" id="pages" />
+            <input type="number" name="pages" id="pages" placeholder="457" />
           </div>
           <div class="form-book-read">
             <label for="read">Read: </label>
@@ -32,6 +42,10 @@
               <option value="true">Yes</option>
               <option value="false">No</option>
             </select>
+          </div>
+          <div class="form-btn-container">
+            <button id="form-submit" type="submit">Submit</button>
+            <button id="form-cancel" type="button">Cancel</button>
           </div>
         </form>
       </div>
