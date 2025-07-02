@@ -12,23 +12,38 @@ const formCancel = document.getElementById("form-cancel");
 
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+const Book = function (title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
   this.id = crypto.randomUUID();
-}
+};
 
-function addBookToLibrary(title, author, pages, read) {
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
+const addBookToLibrary = function (title, author, pages, read) {
   const book = new Book(title, author, pages, read);
   myLibrary.push(book);
-}
+};
 
-function displayBooks() {
+//seed data
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
+addBookToLibrary(
+  "Harry Potter and the Sorcerer's Stone",
+  "J.K. Rowling",
+  309,
+  false
+);
+addBookToLibrary("Dune", "Frank Herbert", 412, true);
+
+const displayBooks = function () {
   //clear table to repopulate data
   tableBody.innerHTML = "";
 
+  //populate table elements per book
   myLibrary.forEach((book) => {
     const tr = document.createElement("tr");
     const thTitle = document.createElement("th");
@@ -38,8 +53,14 @@ function displayBooks() {
     const tdPages = document.createElement("td");
     tdPages.innerText = book.pages;
     const tdRead = document.createElement("td");
-    tdRead.innerText = book.read;
+    tdRead.innerHTML = `
+        <select name="read" class="read-btn" data-id="${book.id}">
+          <option ${book.read ? "selected" : ""} value="true">Yes</option>
+          <option ${book.read ? "" : "selected"} value="false">No</option>
+        </select>
+    `;
 
+    //populate delete button per book
     const tdDelete = document.createElement("td");
     tdDelete.innerHTML = `<button data-id=${book.id} class="delete-btn" type='button'>X</button>`;
 
@@ -52,6 +73,7 @@ function displayBooks() {
   });
 
   const deleteBtns = document.querySelectorAll(".delete-btn");
+  const readBtns = document.querySelectorAll(".read-btn");
 
   deleteBtns.forEach((button) => {
     button.addEventListener("click", function () {
@@ -62,9 +84,17 @@ function displayBooks() {
       displayBooks();
     });
   });
-}
 
-addBookToLibrary("hello", "meh", 1234, true);
+  readBtns.forEach((button) => {
+    button.addEventListener("change", function () {
+      const updateBook = myLibrary.findIndex(
+        (book) => book.id === button.dataset.id
+      );
+      myLibrary[updateBook].toggleRead();
+      displayBooks();
+    });
+  });
+};
 
 addBookBtn.addEventListener("click", function () {
   form.classList.toggle("hidden");
@@ -78,7 +108,8 @@ formSubmit.addEventListener("click", function (e) {
     formTitle.value,
     formAuthor.value,
     formPages.value,
-    formRead.value
+    //convert the string to bool
+    formRead.value === "true" ? true : false
   );
 
   form.classList.toggle("hidden");
@@ -102,4 +133,5 @@ formCancel.addEventListener("click", function () {
   formRead.value = "";
 });
 
+//on first load
 displayBooks();
