@@ -50,6 +50,18 @@ function displayBooks() {
     tr.appendChild(tdRead);
     tr.appendChild(tdDelete);
   });
+
+  const deleteBtns = document.querySelectorAll(".delete-btn");
+
+  deleteBtns.forEach((button) => {
+    button.addEventListener("click", function () {
+      const bookDelete = myLibrary.findIndex(
+        (book) => book.id === button.dataset.id
+      );
+      myLibrary.splice(bookDelete, 1);
+      displayBooks();
+    });
+  });
 }
 
 addBookToLibrary("hello", "meh", 1234, true);
