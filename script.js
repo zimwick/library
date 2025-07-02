@@ -73,7 +73,7 @@ const displayBooks = function () {
   });
 
   const deleteBtns = document.querySelectorAll(".delete-btn");
-  const readBtns = document.querySelectorAll(".read-btn");
+  const readDropDowns = document.querySelectorAll(".read-btn");
 
   deleteBtns.forEach((button) => {
     button.addEventListener("click", function () {
@@ -85,10 +85,10 @@ const displayBooks = function () {
     });
   });
 
-  readBtns.forEach((button) => {
-    button.addEventListener("change", function () {
+  readDropDowns.forEach((dropDown) => {
+    dropDown.addEventListener("change", function () {
       const updateBook = myLibrary.findIndex(
-        (book) => book.id === button.dataset.id
+        (book) => book.id === dropDown.dataset.id
       );
       myLibrary[updateBook].toggleRead();
       displayBooks();
