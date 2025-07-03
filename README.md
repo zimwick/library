@@ -41,15 +41,15 @@ A simple web-based Library app built as part of The Odin Project curriculum. Thi
 
 3. Each book appears in the table with:
 
-- Title (in a <th> for visual emphasis)
+   - Title (in a `<th>` for visual emphasis)
 
-- Author
+   - Author
 
-- Page count
+   - Page count
 
-- Read status (select dropdown)
+   - Read status (select dropdown)
 
-- Delete button (❌)
+   - Delete button (❌)
 
 4. Users can update the read status or delete a book, and changes are reflected instantly.
 
