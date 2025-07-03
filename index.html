@@ -3,15 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
     <title>Library App</title>
   </head>
   <body>
-    <header><h1>Libray App</h1></header>
+    <header><h1>Library App</h1></header>
     <main>
+      <table>
+        <caption>
+          Library
+        </caption>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Pages</th>
+            <th>Read</th>
+          </tr>
+        </thead>
+        <tbody id="table-data"></tbody>
+      </table>
       <div class="add-book-container">
-        <button id="add-book-btn" type="button">New Book</button>
+        <button id="add-book-btn" class="btn" type="button">New Book</button>
         <form action="" class="hidden">
           <div class="form-book-title">
             <label for="title">Title: </label>
@@ -44,25 +64,11 @@
             </select>
           </div>
           <div class="form-btn-container">
-            <button id="form-submit" type="submit">Submit</button>
-            <button id="form-cancel" type="button">Cancel</button>
+            <button id="form-submit" class="btn" type="submit">Submit</button>
+            <button id="form-cancel" class="btn" type="button">Cancel</button>
           </div>
         </form>
       </div>
-      <table>
-        <caption>
-          Library
-        </caption>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Read</th>
-          </tr>
-        </thead>
-        <tbody id="table-data"></tbody>
-      </table>
     </main>
   </body>
 </html>

@@ -62,7 +62,7 @@ const displayBooks = function () {
 
     //populate delete button per book
     const tdDelete = document.createElement("td");
-    tdDelete.innerHTML = `<button data-id=${book.id} class="delete-btn" type='button'>X</button>`;
+    tdDelete.innerHTML = `<button data-id=${book.id} class="delete-btn" type='button'>❌</button>`;
 
     tableBody.appendChild(tr);
     tr.appendChild(thTitle);

@@ -4,6 +4,81 @@
   box-sizing: border-box;
 }
 
+html {
+  background-color: #457b9d;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: #f1faee;
+  padding-top: 20px;
+  width: 1000px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #e63946;
+  font-size: 48px;
+}
+header {
+  margin-bottom: 20px;
+}
+
+.add-book-container {
+  margin: 0 auto;
+  text-align: left;
+  width: 500px;
+}
+
+table {
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+caption {
+  display: none;
+}
+
+thead {
+  color: #457b9d;
+  font-size: 20px;
+}
+
+.btn {
+  background-color: #457b9d;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 12px;
+  padding: 5px 12px;
+  font-weight: 600;
+  border: none;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #3f708e;
+  cursor: pointer;
+}
+
+.delete-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+}
+
 .hidden {
   display: none;
+}
+
+form div {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  gap: 12px;
 }
