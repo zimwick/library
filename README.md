@@ -1,4 +1,4 @@
-🔗 Live Demo: [View the Site](https://zimwick.github.io/library/)
+🔗 Live Demo: [View the Site](https://zimwick.github.io/library-app/)
 
 📚 Library App
 A simple web-based Library app built as part of The Odin Project curriculum. This app allows users to add, view, update, and delete books from a virtual library using a clean and minimal UI.
