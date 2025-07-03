@@ -29,13 +29,23 @@ header {
 .add-book-container {
   margin: 0 auto;
   text-align: left;
-  width: 500px;
+  width: 700px;
 }
 
 table {
-  width: 500px;
+  width: 700px;
   margin: 0 auto;
   text-align: left;
+  margin-bottom: 25px;
+  border-collapse: collapse;
+}
+
+th,
+td:not(:last-child) {
+  border-bottom: 1px solid #333;
+}
+.read-cell {
+  width: 1%;
 }
 
 caption {
@@ -72,13 +82,41 @@ thead {
   cursor: pointer;
 }
 
+#form-cancel {
+  background-color: #e63946;
+}
+
+#form-cancel:hover {
+  background-color: #cf3441;
+}
+
 .hidden {
   display: none;
 }
 
-form div {
+form div:not(:last-child) {
   display: flex;
-  width: 300px;
+  width: 380px;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
   gap: 12px;
+}
+
+form input {
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  padding: 0 2px;
+}
+
+form label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #457b9d;
+}
+
+form select {
+  width: 300px;
+  height: 30px;
 }

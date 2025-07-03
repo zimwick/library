@@ -53,6 +53,7 @@ const displayBooks = function () {
     const tdPages = document.createElement("td");
     tdPages.innerText = book.pages;
     const tdRead = document.createElement("td");
+    tdRead.className = "read-cell";
     tdRead.innerHTML = `
         <select name="read" class="read-btn" data-id="${book.id}">
           <option ${book.read ? "selected" : ""} value="true">Yes</option>
