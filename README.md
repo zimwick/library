@@ -21,7 +21,7 @@ A simple web-based Library app built as part of The Odin Project curriculum. Thi
 
 - DOM manipulation
 
-- JavaScript object constructors and prototypes
+- JavaScript Classes
 
 - Event listeners
 

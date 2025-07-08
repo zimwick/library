@@ -12,17 +12,44 @@ const formCancel = document.getElementById("form-cancel");
 
 const myLibrary = [];
 
-const Book = function (title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = crypto.randomUUID();
-};
+class Book {
+  #title;
+  #author;
+  #pages;
+  #read;
+  #id = crypto.randomUUID();
 
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
+  constructor(title, author, pages, read) {
+    this.#title = title;
+    this.#author = author;
+    this.#pages = pages;
+    this.#read = read;
+  }
+
+  getTitle() {
+    return this.#title;
+  }
+
+  getAuthor() {
+    return this.#author;
+  }
+
+  getPages() {
+    return this.#pages;
+  }
+
+  getRead() {
+    return this.#read;
+  }
+
+  getId() {
+    return this.#id;
+  }
+
+  toggleRead() {
+    this.#read = !this.#read;
+  }
+}
 
 const addBookToLibrary = function (title, author, pages, read) {
   const book = new Book(title, author, pages, read);
@@ -47,23 +74,23 @@ const displayBooks = function () {
   myLibrary.forEach((book) => {
     const tr = document.createElement("tr");
     const thTitle = document.createElement("th");
-    thTitle.innerText = book.title;
+    thTitle.innerText = book.getTitle();
     const tdAuthor = document.createElement("td");
-    tdAuthor.innerText = book.author;
+    tdAuthor.innerText = book.getAuthor();
     const tdPages = document.createElement("td");
-    tdPages.innerText = book.pages;
+    tdPages.innerText = book.getPages();
     const tdRead = document.createElement("td");
     tdRead.className = "read-cell";
     tdRead.innerHTML = `
-        <select name="read" class="read-btn" data-id="${book.id}">
-          <option ${book.read ? "selected" : ""} value="true">Yes</option>
-          <option ${book.read ? "" : "selected"} value="false">No</option>
+        <select name="read" class="read-btn" data-id="${book.getId()}">
+          <option ${book.getRead() ? "selected" : ""} value="true">Yes</option>
+          <option ${book.getRead() ? "" : "selected"} value="false">No</option>
         </select>
     `;
 
     //populate delete button per book
     const tdDelete = document.createElement("td");
-    tdDelete.innerHTML = `<button data-id=${book.id} class="delete-btn" type='button'>❌</button>`;
+    tdDelete.innerHTML = `<button data-id=${book.getId()} class="delete-btn" type='button'>❌</button>`;
 
     tableBody.appendChild(tr);
     tr.appendChild(thTitle);
@@ -79,7 +106,7 @@ const displayBooks = function () {
   deleteBtns.forEach((button) => {
     button.addEventListener("click", function () {
       const bookDelete = myLibrary.findIndex(
-        (book) => book.id === button.dataset.id
+        (book) => book.getId() === button.dataset.id
       );
       myLibrary.splice(bookDelete, 1);
       displayBooks();
@@ -89,7 +116,7 @@ const displayBooks = function () {
   readDropDowns.forEach((dropDown) => {
     dropDown.addEventListener("change", function () {
       const updateBook = myLibrary.findIndex(
-        (book) => book.id === dropDown.dataset.id
+        (book) => book.getId() === dropDown.dataset.id
       );
       myLibrary[updateBook].toggleRead();
       displayBooks();
